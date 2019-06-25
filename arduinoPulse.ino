@@ -5,8 +5,8 @@ volatile int P = 512;         // peak in pulse wave, seeded
 volatile int T = 512;         // trough in pulse wave, seeded
 volatile int thresh = 512;        // pulse is found when signal exceeds thresh
 volatile int amp = 100;           // holds amplitude of pulse waveform, seeded
-volatile boolean firstBeat = true;  // seeds rate array
-volatile boolean secondBeat = false; // seeds rate array
+volatile bool firstBeat = true;  // seeds rate array
+volatile bool secondBeat = false; // seeds rate array
 
 // Variables from pulse_sensor_test
 // ================================
@@ -24,10 +24,10 @@ volatile int Signal;
 volatile int IBI = 600;
 
 // Becomes true when the pulse is high
-volatile boolean Pulse = false;
+volatile bool Pulse = false;
 
 // Becomes true when Arduino finds a pulse
-volatile boolean QS = false;
+volatile bool QS = false;
 
 // ================================
 
