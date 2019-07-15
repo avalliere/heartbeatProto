@@ -1,13 +1,14 @@
-let ibiArray = []
-let variance
 let varianceArray = []
 let avg = 0;
+let ibiArray = []
+
 const processPulse = (line) => {
+  let variance = calculateVariance(ibiArray)
 
 
   const l = line.split(',')
   // ["0", "120"]
-  var obj = {}
+  let obj = {}
       obj.bpm = parseInt(l[0])
       obj.pulse = parseInt(l[1])
       obj.ibi = parseInt(l[2])
@@ -18,8 +19,10 @@ const processPulse = (line) => {
   // HRV
   // ibiArray = [900, 992, 1000]
   if (obj.ibi !== ibiArray[ibiArray.length - 1] && (typeof obj.ibi === 'number') && isNaN(obj.ibi) !== true) {
+    console.log('IBI ARRAY', ibiArray)
     ibiArray.push(obj.ibi)
     if (ibiArray.length > 10) {
+      console.log('IM IN!!!!!!!!!!!!!!!!')
       ibiArray.shift()
       obj.variance = calculateVariance(ibiArray);
       varianceArray.push(obj.variance);
