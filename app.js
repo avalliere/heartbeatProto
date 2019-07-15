@@ -6,6 +6,7 @@ const SerialPort = require('serialport')
 const readLine = require('readline')
 const usbPort = '/dev/cu.usbmodem14201'
 const port = new SerialPort(usbPort)
+const { processPulse } = require('./serial.js')
 
 app.use(express.static('public'))
 
@@ -16,7 +17,18 @@ io.on('connection', (socket) => {
   // this is the input from port, from createInterface
   lineReader.on('line', line => { 
     console.log(line, " ------- ")
-    io.sockets.emit('signal', line)
+    const lineArr = line.split(',')
+    // ["0", "120"]
+    // let obj = {}
+        // obj.bpm = parseInt(lineArr[0])
+        // obj.pulse = parseInt(lineArr[1])
+        // obj.ibi = parseInt(lineArr[2])
+    const beat = processPulse(line)
+    io.sockets.emit('signal', beat)
+
+    // without processing pulse for HRV
+    // this will work but have to parse out the line
+    // io.sockets.emit('signal', obj)
   })
 })
 
