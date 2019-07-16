@@ -4,7 +4,7 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 const SerialPort = require('serialport')
 const readLine = require('readline')
-const usbPort = '/dev/cu.usbmodem14201'
+const usbPort = '/dev/cu.usbmodem14201'         // Reset the value of this variable to the name of the port your arduino is connected to
 const port = new SerialPort(usbPort)
 const { processPulse } = require('./serial.js')
 
