@@ -1,4 +1,4 @@
-const socket = io.connect('http://localhost:8081');
+const socket = io.connect('http://localhost:8081')
 
 socket.on('signal', (pulseObj) => {
     console.log('DATA', pulseObj)
